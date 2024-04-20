@@ -13,6 +13,7 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
+      get: formatTime
     },
     username: {
       type: String,
@@ -27,6 +28,10 @@ const thoughtSchema = new Schema(
     id: false,
   }
 );
+
+function formatTime(time) {
+  return "FORMATTED TIME";
+}
 
 // Virtual property `reactionCount` that gets the amount reactions a thought has on query
 reactionSchema.virtual('reactionCount').get(function () {
