@@ -1,3 +1,5 @@
+const { format } = require("date-fns");
+
 const { Schema, Types } = require('mongoose');
 
 const reactionSchema = new Schema(
@@ -29,8 +31,8 @@ const reactionSchema = new Schema(
   }
 );
 
-function formatTime(time) {
-    return "FORMATTED TIME";
+function formatTime(createdAt) {
+  return format(createdAt, "PPpp");
 }
 
 module.exports = reactionSchema;

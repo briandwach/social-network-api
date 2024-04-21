@@ -1,3 +1,5 @@
+const { format } = require("date-fns");
+
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 
@@ -24,17 +26,18 @@ const thoughtSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
+      getters: true
     },
     id: false,
   }
 );
 
-function formatTime(time) {
-  return "FORMATTED TIME";
+function formatTime(createdAt) {
+  return format(createdAt, "PPpp");
 }
 
 // Virtual property `reactionCount` that gets the amount reactions a thought has on query
-reactionSchema.virtual('reactionCount').get(function () {
+thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
   });
 
