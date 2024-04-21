@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Thought } = require('../models');
 
 module.exports = {
     // Get all users
@@ -48,15 +48,13 @@ module.exports = {
                 return res.status(404).json({ message: 'No such user exists' });
             }
 
-            // const thoughts = await Thought.deleteMany({ username: user.username });
+            const thoughts = await Thought.deleteMany({ username: user.username });
 
-            // if (thoughts.ok !== 1) {
-            //     return res.status(500).json({ message: 'Error deleting associated thoughts' });
-            // }
+            if (thoughts.ok !== 1) {
+                return res.status(500).json({ message: 'Error deleting associated thoughts' });
+             }
 
-            // res.json({ message: `User successfully deleted including ${thoughts.deletedCount} associated thoughts` });
-
-            res.json({ message: `User successfully deleted including associated thoughts` });
+            res.json({ message: `User successfully deleted including ${thoughts.deletedCount} associated thoughts` });
         } catch (err) {
             console.log(err);
             res.status(500).json(err);
