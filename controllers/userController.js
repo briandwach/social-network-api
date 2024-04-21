@@ -24,7 +24,11 @@ module.exports = {
                 return res.status(404).json({ message: 'No user with that ID' })
             }
 
-            res.json(user);
+            // Convert the Mongoose document to a plain JavaScript object
+            const userObject = user.toObject();
+            userObject.message = 'Single user information has been retrieved.';
+
+            res.json(userObject);
         } catch (err) {
             console.log(err);
             return res.status(500).json(err);
@@ -52,7 +56,7 @@ module.exports = {
 
             if (thoughts.ok !== 1) {
                 return res.status(500).json({ message: 'Error deleting associated thoughts' });
-             }
+            }
 
             res.json({ message: `User successfully deleted including ${thoughts.deletedCount} associated thoughts` });
         } catch (err) {
