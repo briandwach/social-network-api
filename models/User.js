@@ -28,9 +28,14 @@ const userSchema = new Schema(
       }
     ]
   },
+  // Adder 
   {
     toJSON: {
       virtuals: true,
+    },
+    // Enabling virtuals when coverting toObject as well
+    toObject: {
+      virtuals: true
     },
     id: false
   }
