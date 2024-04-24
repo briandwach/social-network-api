@@ -27,7 +27,11 @@ const reactionSchema = new Schema(
     toJSON: {
       getters: true,
     },
-    id: false,
+    // Enabling getters when coverting toObject as well
+    toObject: {
+      getters: true,
+    },
+    id: false
   }
 );
 

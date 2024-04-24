@@ -28,6 +28,11 @@ const thoughtSchema = new Schema(
       virtuals: true,
       getters: true
     },
+    // Enabling virtuals and getters when coverting toObject as well
+    toObject: {
+      virtuals: true,
+      getters: true
+    },
     id: false,
   }
 );
@@ -39,8 +44,8 @@ function formatTime(createdAt) {
 
 // Virtual property `reactionCount` that gets the amount reactions a thought has on query
 thoughtSchema.virtual('reactionCount').get(function () {
-    return this.reactions.length;
-  });
+  return this.reactions.length;
+});
 
 const Thought = model('thought', thoughtSchema);
 
