@@ -38,7 +38,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No user with that ID' })
             }
 
-            // Convert the Mongoose document to a plain JavaScript object and add an action property for feedback
+            // Convert the Mongoose document to a plain JavaScript object and add a query property for feedback
             const userObject = { query: `Find User by ID`, timeOfQuery: timeOfQuery(), ...user.toObject() };
 
             res.json(userObject);
@@ -83,7 +83,7 @@ module.exports = {
                 }
             };
 
-            // Convert the Mongoose document to a plain JavaScript object and add an action property for feedback
+            // Convert the Mongoose document to a plain JavaScript object and add a query property for feedback
             const userObject = {
                 query: `Delete User`,
                 timeOfQuery: timeOfQuery(),
@@ -115,7 +115,7 @@ module.exports = {
                 return res.status(404).json({ message: 'Cannot update.  No user with that ID' })
             }
 
-            // Convert the Mongoose document to a plain JavaScript object and add an action property for feedback
+            // Convert the Mongoose document to a plain JavaScript object and add a query property for feedback
             const userObject = {
                 query: `Update User`,
                 timeOfQuery: timeOfQuery(),
@@ -144,7 +144,7 @@ module.exports = {
                     .json({ message: 'Cannot add friend. No user found with that ID' });
             }
 
-            // Convert the Mongoose document to a plain JavaScript object and add an action property for feedback
+            // Convert the Mongoose document to a plain JavaScript object and add a query  property for feedback
             const userObject = {
                 query: `Add Friend`,
                 timeOfQuery: timeOfQuery(),
