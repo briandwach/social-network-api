@@ -31,6 +31,7 @@ const reactionSchema = new Schema(
   }
 );
 
+// Getter function to return timestamp in an easier format to read
 function formatTime(createdAt) {
   return format(createdAt, "PPpp");
 }
